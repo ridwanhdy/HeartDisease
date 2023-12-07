@@ -10,6 +10,28 @@ from sklearn import preprocessing
 import pickle
 from sklearn.linear_model import LogisticRegression
 import plotly.express as px
+import altair as alt
+
+
+def create_altair_chart():
+    np.random.seed(42)
+    df_altair = pd.DataFrame({
+        'X': np.random.rand(100),
+        'Y': np.random.rand(100),
+    })
+
+    chart = alt.Chart(df_altair).mark_circle().encode(
+        x='X:Q',
+        y='Y:Q',
+        color=alt.value('blue'),  # Customize color as needed
+    ).properties(
+        width=550,
+        height=300,
+    )
+
+    return chart
+
+altair_chart = create_altair_chart()
 
 
 
@@ -185,3 +207,6 @@ if st.button('PREDICT'):
 
     fig.update_traces(texttemplate='%{y:.2f}%', textposition='outside')  # Display y-axis values as percentages
     st.plotly_chart(fig)
+
+
+    st.altair_chart(altair_chart, use_container_width=True)
