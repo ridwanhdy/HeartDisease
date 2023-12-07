@@ -1,29 +1,24 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Jun 17 14:53:45 2022
 
-@author: Benk
-"""
 import streamlit as st
 # import polars as pl
 import numpy as np
-import plotly.express as px
 import pandas  as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from sklearn import preprocessing
 import pickle
 from sklearn.linear_model import LogisticRegression
+import plotly.express as px
+
 
 
 # pip list --format=freeze
-# streamlit run "C:\Users\Benk\Desktop\PowerBi\Personal Key Indicators of Heart Disease\main.py"
-
 st.image("banner.png", use_column_width=True)
 
 data = pd.read_csv("heart_2020_cleaned.csv")
 st.subheader('Visualisasi Data Utama :')
-st.write(data.head(25))
+st.write(data.head(11))
 
 
 st.write("""
@@ -172,26 +167,21 @@ ResultProb1=round(ResultProb[0][1] * 100, 2)
 if st.button('PREDICT'):
     # st.write('your prediction:', Result, round(ResultProb[0][1] * 100, 2))
     if (ResultProb1 > 30):
-        st.write('Anda Berpeluang', ResultProb1, '% Terkena Penyakit Jantung')
+        st.write('You have a', ResultProb1, '% chance of getting a heart disease')
     else:
-        st.write('Anda Berpeluang', ResultProb1, '% Terkena Penyakit Jantung')
+        st.write('You have a', ResultProb1, '% chance of getting a heart disease')
 
- # Add a bar chart to visualize the probability using Plotly
-st.subheader('Probability Distribution')
-prob_df = pd.DataFrame({
-         'Class': ['No Heart Disease', 'Heart Disease'],
-         'Probability': ResultProb[0] * 100  # Converting to percentage
+    # Add a bar chart to visualize the probability using Plotly
+    st.subheader('Probability Distribution')
+    prob_df = pd.DataFrame({
+        'Class': ['No Heart Disease', 'Heart Disease'],
+        'Probability': ResultProb[0] * 100  # Converting to percentage
     })
 
-fig = px.bar(prob_df, x='Class', y='Probability', color='Class',
-         labels={'Probability': 'Probability (%)'},
-         title='Probability Distribution of Heart Disease',
-         text='Probability', height=400)
+    fig = px.bar(prob_df, x='Class', y='Probability', color='Class',
+                 labels={'Probability': 'Probability (%)'},
+                 title='Probability Distribution of Heart Disease',
+                 text='Probability', height=400)
 
-fig.update_traces(texttemplate='%{y:.2f}%', textposition='outside')  # Display y-axis values as percentages
-st.plotly_chart(fig)
-  
-  
-  
-  
-
+    fig.update_traces(texttemplate='%{y:.2f}%', textposition='outside')  # Display y-axis values as percentages
+    st.plotly_chart(fig)
