@@ -189,7 +189,7 @@ fig = px.bar(prob_df, x='Class', y='Probability', color='Class',
          text='Probability', height=400)
 
 fig.update_traces(texttemplate='%{y:.2f}%', textposition='outside')  # Display y-axis values as percentages
-    st.plotly_chart(fig)
+st.plotly_chart(fig)
   
   
   
