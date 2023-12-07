@@ -172,9 +172,9 @@ ResultProb1=round(ResultProb[0][1] * 100, 2)
 if st.button('PREDICT'):
  # st.write('your prediction:', Result, round(ResultProb[0][1] * 100, 2))
  if (ResultProb1>30):
-  st.write('You have a', ResultProb1, '% chance of getting a heart disease' )
+  st.write('Anda Berpeluang', ResultProb1, '% Terkena Penyakit Jantung' )
  else:
-  st.write('You have a', ResultProb1, '% chance of getting a heart disease' )
+  st.write('Anda Berpeluang', ResultProb1, '% Terkena Penyakit Jantung' )
   
   
   
