@@ -170,11 +170,11 @@ ResultProb= loaded_model.predict_proba(dataToPredic)
 ResultProb1=round(ResultProb[0][1] * 100, 2)
 
 if st.button('PREDICT'):
- # st.write('your prediction:', Result, round(ResultProb[0][1] * 100, 2))
- if (ResultProb1>30):
-  st.write('Anda Berpeluang', ResultProb1, '% Terkena Penyakit Jantung' )
- else:
-  st.write('Anda Berpeluang', ResultProb1, '% Terkena Penyakit Jantung' )
+    # st.write('your prediction:', Result, round(ResultProb[0][1] * 100, 2))
+    if (ResultProb1 > 30):
+        st.write('Anda Berpeluang', ResultProb1, '% Terkena Penyakit Jantung')
+    else:
+        st.write('Anda Berpeluang', ResultProb1, '% Terkena Penyakit Jantung')
 
  # Add a bar chart to visualize the probability using Plotly
 st.subheader('Probability Distribution')
