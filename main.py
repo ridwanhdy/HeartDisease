@@ -13,6 +13,7 @@ from sklearn.metrics import accuracy_score
 from sklearn import preprocessing
 import pickle
 from sklearn.linear_model import LogisticRegression
+import plotly.express as px
 
 
 
@@ -175,6 +176,21 @@ if st.button('PREDICT'):
   st.write('Anda Berpeluang', ResultProb1, '% Terkena Penyakit Jantung' )
  else:
   st.write('Anda Berpeluang', ResultProb1, '% Terkena Penyakit Jantung' )
+
+# Add a bar chart to visualize the probability using Plotly
+    st.subheader('Probability Distribution')
+    prob_df = pd.DataFrame({
+        'Class': ['No Heart Disease', 'Heart Disease'],
+        'Probability': ResultProb[0]
+    })
+
+    fig = px.bar(prob_df, x='Class', y='Probability', color='Class',
+                 labels={'Probability': 'Probability (%)'},
+                 title='Probability Distribution of Heart Disease',
+                 text='Probability', height=400)
+
+    fig.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
+    st.plotly_chart(fig)
   
   
   
