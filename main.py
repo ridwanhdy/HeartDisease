@@ -177,20 +177,19 @@ if st.button('PREDICT'):
   st.write('Anda Berpeluang', ResultProb1, '% Terkena Penyakit Jantung' )
 
  # Add a bar chart to visualize the probability using Plotly
-    st.subheader('Probability Distribution')
-    prob_df = pd.DataFrame({
-        'Class': ['No Heart Disease', 'Heart Disease'],
-        'Probability': ResultProb[0] * 100  # Converting to percentage
+st.subheader('Probability Distribution')
+prob_df = pd.DataFrame({
+         'Class': ['No Heart Disease', 'Heart Disease'],
+         'Probability': ResultProb[0] * 100  # Converting to percentage
     })
 
-    fig = px.bar(prob_df, x='Class', y='Probability', color='Class',
-                 labels={'Probability': 'Probability (%)'},
-                 title='Probability Distribution of Heart Disease',
-                 text='Probability', height=400)
+fig = px.bar(prob_df, x='Class', y='Probability', color='Class',
+         labels={'Probability': 'Probability (%)'},
+         title='Probability Distribution of Heart Disease',
+         text='Probability', height=400)
 
-    fig.update_traces(texttemplate='%{y:.2f}%', textposition='outside')  # Display y-axis values as percentages
+fig.update_traces(texttemplate='%{y:.2f}%', textposition='outside')  # Display y-axis values as percentages
     st.plotly_chart(fig)
-
   
   
   
