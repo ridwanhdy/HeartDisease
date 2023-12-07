@@ -23,7 +23,7 @@ st.image("banner.png", use_column_width=True)
 
 data = pd.read_csv("heart_2020_cleaned.csv")
 st.subheader('Visualisasi Data Utama :')
-st.dataframe(data)
+st.write(data.head(25))
 
 
 st.write("""
