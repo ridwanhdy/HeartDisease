@@ -207,6 +207,3 @@ if st.button('PREDICT'):
 
     fig.update_traces(texttemplate='%{y:.2f}%', textposition='outside')  # Display y-axis values as percentages
     st.plotly_chart(fig)
-
-
-    st.altair_chart(altair_chart, use_container_width=True)
